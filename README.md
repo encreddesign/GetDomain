@@ -7,7 +7,7 @@ Small command line application for getting domain from uri, it also checks the p
   <li>https</li>
 </ol>
 
-***How to Use:***
+<h2>How to Use:</h2>
 =============
 
 The exe file is located in the bin directory, copy the full path of this folder to the PATH variable on your system:
