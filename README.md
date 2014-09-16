@@ -36,7 +36,7 @@ Press enter, the result should be the following:
 The line "This protocol is standard" shows because http is the standard protocol. The next line "www.unity3d.com" is the domain name
 in the uri.
 
-Now do the same again but this use the website:
+Now do the same again but this time use the website:
 
 <pre><code>
   https://github.com
