@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <string.h>
 #include <string>
 
@@ -41,9 +42,9 @@ void get_protocol(char uri[]){
 			}
 		}
 		if(secure){
-			cout << "This protocol is secure" << endl;
+			cout << "This protocol is secure \n" << endl;
 		}else{
-			cout << "This protocol is standard" << endl;
+			cout << "This protocol is standard \n" << endl;
 		}
 	}
 }
@@ -88,9 +89,42 @@ void get_domain(char uri[]){
 					result2 = result;
 				}
 			}
-			cout << result2 << endl;
+			cout << "Domain: " << result2 << endl;
 		}
 	}
+}
+
+int char_count(string s, char c){
+	int count = 0;
+	for(int i = 0; i < s.size(); i++){
+		if(s[i] == c) count++;
+	}
+	return count;
+}
+
+void find_endpoints(string s, char c){
+	char arr[s.size()];
+	strcpy(arr, s.c_str());
+	char * a_ocurs = strchr(arr, c);
+	while(a_ocurs != NULL){
+		unsigned int idx = a_ocurs-arr+1;
+		cout << "Endpoint: " << s.substr(idx, idx + 1) << endl;
+		a_ocurs = strchr(a_ocurs + 1, c);
+	}
+}
+
+void get_endpoints(char uri[]){
+	unsigned int len = strlen(uri);
+	URI_CHARS u_chars;
+	string uristr(uri);
+	if(len > 0){
+		int endpoint_fslashp = uristr.find(u_chars._fslash);
+		int strpos = uristr.find(u_chars._fslash, endpoint_fslashp + 2);
+		if(strpos != -1){
+			//cout << "Endpoint: " << char_count(uristr.substr(strpos, len), u_chars._fslash) << endl;
+			find_endpoints(uristr.substr(strpos, len), u_chars._fslash);
+		}
+	} 
 }
 
 //main run function
@@ -99,6 +133,7 @@ int main(int argc, char* argv[]) {
 		for(int i = 1; i < argc; i++){
 			get_protocol(argv[i]);
 			get_domain(argv[i]);
+			get_endpoints(argv[i]);
 		}
 	}
 	return 0;
