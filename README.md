@@ -30,7 +30,8 @@ Press enter, the result should be the following:
 <pre><code>
   c:\user\username\dir\bin> getdomain http://www.unity3d.com
   This protocol is standard
-  www.unity3d.com
+  
+  Domain: www.unity3d.com
 </code></pre>
 
 The line "This protocol is standard" shows because http is the standard protocol. The next line "www.unity3d.com" is the domain name
@@ -46,6 +47,32 @@ Once the changes were made, press enter. The result should be the following:
 
 <pre><code>
   This protocol is secure
-  github.com
+  
+  Domain: github.com
 </code></pre>
 
+<h3>Endpoints parser:</h3>
+
+Endpoints parser, retrieves the endpoints from the given uri (/endpoint/endpoint2/).
+
+For this example we will use the instagram api endpoints, in the command line type the following:
+
+<pre><code>
+  c:\user\username\dir\bin> getdomain https://api.instagram.com/v1/media/popular
+</code></pre>
+
+<b>Note:</b>Make sure to replace user, username and directory to your own names.
+
+Press enter, the result should be the following:
+
+<pre><code>
+  c:\user\username\dir\bin> getdomain https://api.instagram.com/v1/media/popular
+  This protocol is secure
+  
+  Domain: api.instagram.com
+  Endpoint: v1
+  Endpoint: media
+  Endpoint: popular
+</code></pre>
+
+The program now finds the endpoints in the uri.
